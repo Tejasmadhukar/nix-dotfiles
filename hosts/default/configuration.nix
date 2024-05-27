@@ -91,6 +91,7 @@
     #  thunderbird
     ];
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINrxc9ZLeyi7f1i7QqWKRD4L7xT2Yb06lHvxCTSQHajI tejasmadhukar@Tejass-MacBook-Air.local" ];
   };
 
   home-manager = {
@@ -118,6 +119,9 @@
 	gnumake    
 	git
 	zsh
+	gcc
+	libtool
+	clang
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -131,7 +135,13 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh = {
+	enable = true;
+	settings.PasswordAuthentication = false;
+	settings.KbdInteractiveAuthentication = false;
+  };
+  services.logind.lidSwitch = "ignore";
+  services.logind.lidSwitchExternalPower = "ignore";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
