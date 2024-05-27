@@ -35,6 +35,12 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     gh
+    jq
+    telegram-desktop
+    htop
+    nodejs_22
+    go
+    rustup
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
